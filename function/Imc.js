@@ -1,9 +1,14 @@
-function calcularIMC(weight, heigth){
+function calcularIMC(weight, heigth, callback){
     if(weight === undefined || heigth === undefined){
         throw Error("need two parameters: weight and heigth")
     
     }
-    return weight / (heigth*heigth);
+    let imc = weight / (heigth*heigth);
+    if(callback === "function"){
+      return callback(imc);
+    }
+    return imc;
+    
 }
 
 function ClassificarIMC(imc){
@@ -25,4 +30,4 @@ function ClassificarIMC(imc){
 }
 
 let imc = calcularIMC(74, 1.70);
-console.log(ClassificarIMC(imc));
+let imc2 = calcularIMC(60, 1.65, calcularIMC);

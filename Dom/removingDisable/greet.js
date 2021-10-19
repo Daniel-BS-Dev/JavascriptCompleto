@@ -6,6 +6,9 @@
 
     edit.addEventListener('click', function() {
         email.disabled=false;
+        email.focus();
     })
+
+    
     
 })()

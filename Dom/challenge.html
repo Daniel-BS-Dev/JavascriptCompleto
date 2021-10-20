@@ -14,12 +14,15 @@
         <input type="checkbox" id="contrato" onchange="change()">
         <label for="contrato">Li e aceito o seguinte contrato</label><br><br>
         <textarea name="" id="" cols="30" rows="10" readonly>Este contrato nos dá direito à ...</textarea><br><br>
-        <input type="submit" disabled class="cadastrar" value="cadastrar">
+        <input type="submit" class="cadastrar" value="cadastrar">
     </form>
 
     <script>
+        const cadastrar = document.querySelector('.cadastrar');
+        cadastrar.disabled=true;
+        
         function change(){
-       const cadastrar = document.querySelector('.cadastrar');
+     
        const box       = document.querySelector('#contrato');
        let checked     = box.checked;
 

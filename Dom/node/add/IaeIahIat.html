@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertAdjacentElement(), insertAdjacentHTML(), insertAdjacentText()</title>
+     <style>
+         .container{
+             background: #cccc;
+             padding: 15px;
+         }
+
+         .container2 p{
+             border: 1px solid red;
+             padding: 10px;
+             margin: 15px;
+         }
+     </style>
+</head>
+<body>
+    <h1>teste DOM</h1>
+
+    <!--beforebegin-->
+    <div class="container2">
+        <!--afterbegin-->
+        <p>parafrafo 1</p>
+        <p>parafrafo 2</p>
+        <p>parafrafo 3</p>
+        <!--beforeend-->
+    </div>
+    <!--afterend-->
+
+    <div class="container">
+        <p>teste 1</p>
+        <p class="here">lorem <a href="#">link</a> .</p>
+        <p>teste 2</p>
+
+        <h2>Liste</h2>
+        <ul>
+            <li>item 1</li>
+            <li>item 2
+                <ul>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>
+        </ul>
+    </div>
+    <script>
+        
+        const container2 = document.querySelector(".container2")
+        
+        //beforebegin, afterbegin, beforeend, afterend
+        container2.insertAdjacentHTML("beforebegin","<b>texto inserido</b>")// inseri um elemento html
+
+        container2.insertAdjacentText("beforeend","texto inserido com sucesso")// inseri um texto
+
+        const em = document.createElement("em");
+        em.textContent="texto com enfase";
+        container2.insertAdjacentElement("afterbegin", em);
+
+
+    </script>
+</body>
+</html>

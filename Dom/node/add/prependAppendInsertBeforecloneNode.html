@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepend, Append, insertBefore and cloneNode </title>
+</head>
+<body>
+    <h1>teste DOM</h1>
+
+    <div class="container">
+        <p>teste 1</p>
+        <p class="aqui">lorem <a href="#">link</a> .</p>
+        <p>teste 2</p>
+
+        <h2>Liste</h2>
+        <ul>
+            <li>item 1</li>
+            <li>item 2
+                <ul>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>
+        </ul>
+    </div>
+    <script>
+        const text = document.createElement("div");
+        text.setAttribute("style","color:red");
+        text.textContent = "essa é uma div";
+        document.querySelector(".container").prepend(text,"este aqui é outro parametro", " outro parametro");//aceita mas de um parametro
+
+        //insertiBefore
+        const h1 = document.createElement("h2");
+        h1.setAttribute("style","color:green");
+        h1.textContent="essa é um h1";
+        document.querySelector(".container").insertBefore(h1, document.querySelector(".aqui"));
+    
+        //clonando um elemento
+        let sublevel = document.querySelector("ul ul")
+        sublevel = sublevel.cloneNode(true);
+
+        const h2 = document.querySelector("h2");
+
+        document.querySelector(".container").insertBefore(sublevel, h2.nextElementSibling);
+    </script>
+    
+</body>
+</html>

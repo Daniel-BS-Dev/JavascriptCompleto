@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChildNode, Children, Firstchild, FirstEmentChild, LastChild, LastElementChild and HasChildNodes()</title>
+</head>
+<body>
+    <h1>teste DOM</h1>
+
+    <div class="container">
+        <p>teste 1</p>
+        <p>lorem <a href="#">link</a> .</p>
+        <p>teste 2</p>
+
+        <h2>Liste</h2>
+        <ul>
+            <li>item 1</li>
+            <li>item 2
+                <ul>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>
+        </ul>
+    </div>
+    <script>
+        const link = document.querySelector("a");
+        const list = document.querySelector("ul")
+
+        console.log(link);
+        console.log(list.childNodes);
+        console.log(list.children);
+        console.log(list.parentElement.firstChild);
+        console.log(list.parentElement.firstElementChild);
+        console.log(list.lastElementChild.hasChildNodes())
+    </script>
+</body>
+</html>

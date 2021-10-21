@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreateEment, CreateAttribute, SetAttributeNode, appendChild</title>
+</head>
+<body>
+    <h1>teste DOM</h1>
+
+    <div class="container">
+        <p>teste 1</p>
+        <p>lorem <a href="#">link</a> .</p>
+        <p>teste 2</p>
+
+        <h2>Liste</h2>
+        <ul>
+            <li>item 1</li>
+            <li>item 2
+                <ul>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                    <li>item 2.a</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>
+        </ul>
+    </div>
+    <script>
+        const exemple1 = document.createElement("h1");      // criei o h1
+        const attribute = document.createAttribute("id");// criei um atributo
+        attribute.value = "title1"                       // criei o valor do meu atributo
+        exemple1.setAttributeNode(attribute);               // passei a minha classe para o meu h1
+         
+        const text = document.createTextNode("criar nós no DOM"); // crie um texto
+        exemple1.appendChild(text)                                   // adicionei o meu texto no meu h1
+        console.log(exemple1);//<h1 id="title1">criar nós no DOM<h1>
+
+        // outra maneira de criar um atributo
+        const exemple2 = document.createElement("div"); 
+        exemple2.setAttribute("class","container")  // primeiro valor é o tipo de atributo que eu quero, segundo é o valor
+        exemple2.setAttribute("style","color:red")  // 
+        console.log(exemple2);//<div class="contaiiner" style="color:red"><div>
+
+        // outra maneira de cria um elemento e atrbuir um elemento a ele
+        const exemple3 = document.createElement("section");
+        exemple3.textContent = "essa é uma section"
+        console.log(exemple3);//<section>essa é uma section</section>
+
+   </script>
+</body>
+</html>

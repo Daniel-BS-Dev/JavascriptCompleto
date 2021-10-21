@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLCollection VS NodeList</title>
+</head>
+<body>
+    <!--todo elemento do getEmentsbytagName e getElementByClassName retorna um HTMLCollection é static atualiza ja a 
+    quaerySelectorAll e um node não atualiza -->
+
+    <div class="conatainer">
+        <ul id="list">
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+            <li>item 5</li>
+        </ul>
+    </div>
+    <script>
+        const nodelist = document.querySelectorAll("#list li");
+        const collection = document.getElementById("list")
+        .getElementsByTagName("li");
+
+        console.log(nodelist);
+        console.log(collection);
+
+        document.querySelector("#list").innerHTML += "<li>item 6</li>";
+        
+        console.log(nodelist);
+        console.log(collection);
+
+        document.querySelector("#list").innerHTML += "";
+        console.log(nodelist);
+        console.log(collection);
+
+        
+    </script>
+</body>
+</html>

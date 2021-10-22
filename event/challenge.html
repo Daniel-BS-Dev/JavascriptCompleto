@@ -175,7 +175,9 @@
         // verificardo se o input esta vazio
         function send(e){
             if(title.value == ""){
-                showMessage('Titulo está vazio. Preencha-o para prosseguir')
+                showMessage('Titulo está vazio. Preencha-o para prosseguir', function(){
+                    title.focus()
+                })
                 e.preventDefault();//se o meu input estiver vazio aparecerá a mensagem mas sera inviada sem o conteudo com o previo ele impedira o comportamento
                 title.focus();
             }
@@ -224,12 +226,35 @@
         });
 
         //adicinando o aviso feito por mim
-        function showMessage(msg){
+        function showMessage(msg, cb){
             //feedbackMessage.classList.add("test") adicina e não remove as outras classes
             feedbackMessage.setAttribute("class","test");//adiciona a classe mais remove as outras que ja tem
             feedbackMessage.getElementsByTagName("p")[0].textContent=msg;
+
+            btnMessage.focus();
+
+            function errorMessage(){
+                feedbackMessage.setAttribute("class","test1");
+
+                btnMessage.removeEventListener("keyup", pressedKeyBoard)
+                btnMessage.removeEventListener("click",errorMessage);
+           
+
+            if(typeof cb === "function"){
+                cb()
+            }
         }
 
+        function pressedKeyBoard(e){
+            if(e.keyCode === 27){
+                errorMessage();
+            }
+            
+        }
+
+        btnMessage.addEventListener("keyup", pressedKeyBoard);
+        btnMessage.addEventListener("click",errorMessage);
+    }
         title.addEventListener("input", function(){
             if(this.value.length > 0){
                 //feedbackMessage.classList.remove("test") remove
@@ -237,9 +262,7 @@
             }
         })
     
-       btnMessage.addEventListener("click", function(){
-          feedbackMessage.setAttribute("class","test1");
-        })
+      
     </script>
 </body>
 </html>

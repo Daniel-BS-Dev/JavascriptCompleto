@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyup, Keydown and Keypress</title>
+</head>
+<body>
+    <textarea name="msg" id="msg" cols="30" rows="10">
+
+    </textarea>
+    <script>
+        const text = document.getElementById("msg");
+
+        text.addEventListener("keyup", keyup);
+        text.addEventListener("input", input);
+        text.addEventListener("keydown", keydown);
+        text.addEventListener("keypress", keypress);
+
+        function keyup(e){   //pega o valor atualizado do input
+            console.log("keyup")
+            console.log(this.value)
+        }
+
+        function input(e){
+            console.log("input")
+            console.log(this.value)
+        }
+
+        function keydown(e){
+            console.log("keydown")
+            console.log(this.value)
+        }
+
+        function keypress(e){
+            console.log("keypress")
+            console.log(this.value)
+        }
+    </script>
+</body>
+</html>

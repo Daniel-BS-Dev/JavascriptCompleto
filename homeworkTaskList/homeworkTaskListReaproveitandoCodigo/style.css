@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ccc;
+}
+
+.container{
+    display: table;
+    box-shadow: 5px 5px 5px #000;
+    border-radius: 5px;
+    margin: 50px auto;
+    background-color: #eee;
+}
+
+.section1{
+    width: 100%;
+    padding: 40px 20px 40px 20px;
+    display: block;
+    background-color: rgb(99, 95, 95);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.section1 h1{
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+
+}
+
+.section1 input{
+    width: 70%;
+    padding: 5px 10px 5px 10px;
+    margin-right: 10px;
+    border: none;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.section1 button{
+    width: 20%;
+    padding: 5px 70px 5px 30px;
+    margin-right: 10px;
+    border: none;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background: rgb(236, 156, 6);
+
+}
+
+.section2{
+    width: 100%;
+    display: block;
+}
+
+.section2 .itemBox{
+    padding: 30px 20px;
+    display: block;
+}
+
+.section2 li{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px 40px;
+    box-shadow: 5px 5px 5px #000;
+    border-radius: 5px;
+
+}
+
+li input{
+    margin-top: 6px;
+    
+}
+
+li p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 200px;
+}
+
+li button{
+    font-size: 20px;
+}

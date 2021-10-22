@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container{
+            width: 80%;
+            display: block;
+            padding: 20px;
+            background: rgb(120, 95, 141);
+            border-radius: 2px;
+            box-shadow: 5px 5px 5px #000;
+            margin: 100px auto;
+            
+
+        }
+
+        .title{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 35px;
+            margin-bottom: 30px;
+            display: block;
+
+        }
+
+        label{
+            font-family: sans-serif;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .inputTxt{
+            width: 100%;
+            padding: 10px;
+            display: block;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        #txt{
+           width: 100%;
+           display: block;
+           padding: 10px;
+           font-size: 18px;
+        }
+
+        #counterContainer span{
+            font-family: sans-serif;
+            font-size: 17px;
+            margin-right: 5px;
+
+        }
+
+        .chktxt{
+            margin-top: 28px;
+            display: flex;
+            
+        }
+
+        .chktxt p{
+            font-family: sans-serif;
+            font-size: 17px;
+            position: relative;
+            left: 5px;
+            top: -3px;
+        }
+
+        .button1{
+            display: block;
+            padding: 10px 45px 10px 45px;
+            background: rgba(181, 160, 202, 0.85);
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            
+        }
+
+      .button{
+          display: flex;
+          justify-content: end;
+          margin-top: 10px;
+      }
+
+      .test{
+          width: 80%;
+          height: 85px;
+          display: block;
+          margin: 10px auto -90px auto;
+          padding: 10px;
+          background-color: rgb(241, 103, 131);
+          border-radius: 5px 5px 0px 0px;
+          
+      }
+
+      .test button{
+          float: right;
+          position: relative;
+          top: 0;
+          right: 5px;
+          padding: 3px 10px 3px 10px;
+          border: none;
+          font-size: 20px;
+          font-weight: 900;
+          background-color: #db1d43;
+          color: #fff;
+      
+      }
+
+      .test p{
+          width: 80%;
+          display: inline;
+          padding: 5px;
+          position: relative;
+          top: 20px;
+          left: 100px;
+          font-size: 25px;
+          color: #fff;
+
+      }
+
+      .test1{
+          display: none;
+      }
+    </style>
+</head>
+<body>
+
+    
+    <div id="feedbackMessage" class="test1">
+        <p></p>
+
+        <button>X</button>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Cadastre uma tarefa</h1>
+        <form class="formaData">
+            <label>Titutlo</label>
+            <input type="text" name="title" class="inputTxt">
+            <label>Descrição da tarefa</label>
+            <textarea id="txt" rows="5" maxlength="255"></textarea>
+            <div id="counterContainer" style="display: none;"><span></span>Caracteres</div>
+            <div class="chktxt">
+              <input type="checkbox" name=" " id="chk">
+              <p>comprometo-me a entregar esta tarefa o quanto antes</p> 
+            </div>
+        </form>
+        <div class="button"><input type="submit" class="button1" value="Adicionar"></div> 
+    </div>
+
+
+    <script>
+        const form        = document.querySelector(".formaData");
+        const title       = document.querySelector(".inputTxt");
+        const description = document.getElementById("txt");
+        const chkBox      = document.getElementById("chk");
+        const btn         = document.querySelector(".button1");
+        const counterContainer     = document.querySelector("#counterContainer");
+        const counter       = document.querySelector("#counterContainer span");
+        const numberLetters = description.maxLength;
+        const feedbackMessage = document.getElementById("feedbackMessage");
+        const btnMessage = feedbackMessage.getElementsByTagName("button")[0];
+
+
+        // verificardo se o input esta vazio
+        function send(e){
+            if(title.value == ""){
+                showMessage('Titulo está vazio. Preencha-o para prosseguir')
+                e.preventDefault();//se o meu input estiver vazio aparecerá a mensagem mas sera inviada sem o conteudo com o previo ele impedira o comportamento
+                title.focus();
+            }
+        }
+        form.addEventListener("submit", send);
+        btn.addEventListener("click",send);
+
+        // adicionando um contador
+
+        //removendo o display none
+        counterContainer.removeAttribute("style");
+        //counterContainer.style.display="block";
+
+        /*
+        description.addEventListener("keyup",function(){  // quando solto a tecla precionada
+            console.log("keyup");
+        })
+
+        description.addEventListener("keydown",function(){ // quando preciono uma tecla
+            console.log("keydown");
+        })
+
+        description.addEventListener("keypress",function(){// quando preciono uma tecla
+            console.log("change");
+        })*/
+
+        //adicionando o numero de caracteres de forma dinamica
+        show(numberLetters);
+
+        description.addEventListener("input",function(){  //sempre que ocorrer uma alteração
+            let numberLettersEnter = this.value.length   // pegando o numero do valor na minha description
+            let totalRes = parseInt(numberLetters) - numberLettersEnter;
+            show(totalRes);
+        })
+
+        function show(n){
+            counter.textContent=n;
+
+        }
+
+        //desabilitando o botão
+        btn.disabled=true;
+
+        chkBox.addEventListener("change",function(){
+             btn.disabled = !this.checked;
+        });
+
+        //adicinando o aviso feito por mim
+        function showMessage(msg){
+            //feedbackMessage.classList.add("test") adicina e não remove as outras classes
+            feedbackMessage.setAttribute("class","test");//adiciona a classe mais remove as outras que ja tem
+            feedbackMessage.getElementsByTagName("p")[0].textContent=msg;
+        }
+
+        title.addEventListener("input", function(){
+            if(this.value.length > 0){
+                //feedbackMessage.classList.remove("test") remove
+                feedbackMessage.setAttribute("class","test1");
+            }
+        })
+    
+       btnMessage.addEventListener("click", function(){
+          feedbackMessage.setAttribute("class","test1");
+        })
+    </script>
+</body>
+</html>

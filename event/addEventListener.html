@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddEvenetListener</title>
+</head>
+<body>
+    <button id="btn1">botão</button>
+    <button id="btn2">botão</button>
+    <button id="btn3">botão</button>
+
+
+    <script>
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
+        const btn3 = document.getElementById("btn3");
+
+        function clicou(){
+            alert("you clicked on the button")
+        }
+        btn1.addEventListener("click",clicou);
+
+        btn2.addEventListener("mousemove", function(){
+            btn2.style.background="blue";
+        })
+
+        btn2.addEventListener("click", function(){
+            btn2.style.background="red";
+        })
+
+        btn2.addEventListener("mouseout", function(){
+            btn2.style.background="transparent";
+        })
+    </script>
+</body>
+</html>

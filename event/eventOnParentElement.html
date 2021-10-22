@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddEvenetListener</title>
+    <style>
+        .container2{
+            background-color: aqua;
+            margin: 10px;
+            padding: 20px;
+            display: table-cell;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <button class="btn">botão</button>
+       <button class="btn">botão</button>
+       <button class="btn">botão</button>
+    </div>
+<hr>
+    <div class="container2">
+        <button class="btn1">botão</button>
+        <button class="btn1">botão</button>
+        <button class="btn1">botão</button>
+     </div>
+
+
+    <script>
+        
+        const btns = document.querySelectorAll(".btn");
+        [...btns].forEach(button => {
+            button.addEventListener("click",function(e){
+             e.stopPropagation();
+             console.log(e.target); // pega o elemento que foi clicado
+            });
+        })
+
+//adicionando o evento no elemento pai
+const container = document.querySelector(".container2");
+
+container.addEventListener("click",function(e){
+    console.log(e.currentTarget)// elemento em que foi colocada a função, o container
+    console.log(this)           // a mesma coisa do currentTarget, em uma aron function o this e static não muda
+     // pegando so o click do botão
+    if(e.target.nodeName == "BUTTON"){
+        console.log(e.target);// mostrando elemento clicado
+    }
+})
+    
+
+    </script>
+</body>
+</html>

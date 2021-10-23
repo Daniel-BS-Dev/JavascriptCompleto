@@ -50,6 +50,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     background: rgb(236, 156, 6);
+    cursor: pointer;
 
 }
 
@@ -66,26 +67,86 @@ body{
 .section2 li{
     width: 100%;
     display: flex;
+    justify-content: space-between;
     margin-top: 30px;
     background-color: #fff;
-    padding: 20px 40px;
+    padding: 20px 30px;
     box-shadow: 5px 5px 5px #000;
     border-radius: 5px;
+    position: relative;
 
 }
 
-li input{
-    margin-top: 6px;
-    
+li .divTxt{
+    display: flex;
+    align-items: center;
 }
 
-li p{
+.divTxt p{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
+    font-size: 22px;
     margin-left: 10px;
-    margin-right: 200px;
+    
 }
 
 li button{
     font-size: 20px;
+    cursor: pointer;
+   
+}
+
+li .btns{
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+
+.containerEdit{
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #aaa;
+    border-radius: 5px;
+    display:flex;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    z-index: 10000;
+    top:50px;
+    right:-40px;
+    
+
+}
+
+.containerEdit input{
+    width: 50%;
+    height: 30px;
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 17px;
+    border: 3px solid rgb(16, 16, 121);;
+}
+
+.containerEdit button{
+    width:20% ;
+    height: 30px;
+    margin-top: 6px;
+    border: none;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.containerEdit .edit{
+   margin-right: 10px;
+   background-color:rgb(16, 16, 121);
+   
+  
+}
+
+.containerEdit .cancel{
+    background-color: brown;
+
 }

@@ -12,20 +12,49 @@
         }
     ]
 
-    function addEventLi(li) {
-        li.addEventListener("click", function() {
-            console.log(this);
-            
-        })
-        };
-
-        function generateListTask(obj) {
-            let newLi = document.createElement("li");
-            let newP  = document.createElement("p");
+        function generateListTask(obj, e) {
+            let newLi    = document.createElement("li");
+            let divTxt   = document.createElement("div");
+            let newP     = document.createElement("p");
+            let chk      = document.createElement("input");
+            let div      = document.createElement("div");
+            let btnCreate  = document.createElement("button");
+            let btnTrash= document.createElement("button");
+            let divEdit  = document.createElement("div");
+            let txt      = document.createElement("input");
+            let btnEdit  = document.createElement("button");
+            let btnRemove= document.createElement("button");
+ 
+            chk.type = `checkbox`;
+            chk.setAttribute("data-action", "chk");
             newP.textContent=obj.name;
-            newLi.appendChild(newP);       
-            addEventLi(newLi);
+            divTxt.className="divTxt";
+            divTxt.appendChild(chk);
+            divTxt.appendChild(newP);
 
+            newLi.appendChild(divTxt);       
+            div.className="btns";
+
+            divEdit.setAttribute("class", "containerEdit");
+            newLi.appendChild(divEdit);
+            txt.setAttribute("type","text");
+            divEdit.appendChild(txt);
+            btnEdit.textContent="Edit";
+            btnEdit.className="edit"
+            btnEdit.setAttribute("data-action","btnEdit")
+            divEdit.appendChild(btnEdit);
+
+            
+            btnRemove.textContent="Cancel";
+            btnRemove.className="cancel"
+            btnRemove.setAttribute("data-action","btnRemove");
+            divEdit.appendChild(btnRemove);
+
+            newLi.appendChild(div);
+            btnCreate.innerHTML=`<ion-icon data-action="btnCreate" name="create"></ion-icon> `;
+            div.appendChild(btnCreate);
+            btnTrash.innerHTML=` <ion-icon data-action="btnTrash" name="trash"></ion-icon>`;
+            div.append(btnTrash);
             return newLi;
         }
 
@@ -44,13 +73,26 @@
        })
     }
 
-    bntAdd.addEventListener("click",function() {
+    function clickedUl(e) {
+        console.log(e.target);
+        console.log(e.target.getAttribute("data-action"));
+    }
+
+    bntAdd.addEventListener("click",function(e) {
     
-        addTask(input.value);
-        renderTasks()
-        input.value=""
-        input.focus();
+        if(input.value == ""){
+            alert("Campo está vazio. Preenche-o e tente novamente");
+            e.preventDefault();
+            input.focus();
+        }else{
+            addTask(input.value);
+            renderTasks()
+            input.value=""
+            input.focus();
+      }
     });
+
+    ul.addEventListener("click",clickedUl)
 
     renderTasks();
     

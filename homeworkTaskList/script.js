@@ -5,13 +5,29 @@
     const lis    =  ul.getElementsByTagName("li");
 
 
-    let arrTask = [
-        {
+    let arrTask = getSavedData();
+       
+    function getSavedData() {
+
+        let tasksData = localStorage.getItem("tasks");
+        console.log(tasksData)
+        tasksData = JSON.parse(tasksData);
+        console.log(tasksData)
+
+        return tasksData.length ? tasksData : [
+         {
             name:"task 1",
             createAt: Date.now(),
             completed: false,
-        }
-    ]
+          }
+       ]
+     }
+
+    function setNewData() {
+        localStorage.setItem("tasks",JSON.stringify(arrTask));
+    }
+
+    setNewData()
 
         function generateListTask(obj, e) {
             let newLi    = document.createElement("li");
@@ -75,6 +91,7 @@
            createAt: Date.now(),
            completed:false
        })
+       setNewData()
     }
 
     function clickedUl(e) {
@@ -128,7 +145,7 @@
                     editInput.focus();
                     return
                 }
-                
+                setNewData();
             },
 
             btnRemove:function() {
@@ -140,12 +157,17 @@
                 input.focus();
             },
 
+            chk:function() {
+                arrTask[currentLiIndex].completed = !arrTask[currentLiIndex].completed
+            },
+
             btnTrash:function () {
                 let response = confirm("Deseja Deletar")
                 if(!response) return;
                 arrTask.splice(currentLiIndex, 1)
                 renderTasks();
                 input.focus();
+                setNewData();
             }
 
         }

@@ -2,7 +2,7 @@
     const input  = document.getElementById("txt");
     const ul     = document.querySelector(".itemBox");
     const bntAdd = document.getElementById("btnAdd");
-    //const lis    =  ul.getElementsByTagName("li");
+    const lis    =  ul.getElementsByTagName("li");
 
     let arrTask = [
         {
@@ -51,9 +51,9 @@
             divEdit.appendChild(btnRemove);
 
             newLi.appendChild(div);
-            btnCreate.innerHTML=`<ion-icon data-action="btnCreate" name="create"></ion-icon> `;
+            btnCreate.innerHTML=`<ion-icon class="create" data-action="btnCreate" name="create"></ion-icon> `;
             div.appendChild(btnCreate);
-            btnTrash.innerHTML=` <ion-icon data-action="btnTrash" name="trash"></ion-icon>`;
+            btnTrash.innerHTML=` <ion-icon class="trash" data-action="btnTrash" name="trash"></ion-icon>`;
             div.append(btnTrash);
             return newLi;
         }
@@ -74,16 +74,39 @@
     }
 
     function clickedUl(e) {
-        console.log(e.target);
-        console.log(e.target.getAttribute("data-action"));
+        const dataAction = e.target.getAttribute("data-action");
+        if(!dataAction) return;
+
+        let currentLi = e.target;
+        while(currentLi.nodeName !== "LI"){
+            currentLi = currentLi.parentElement;
+        }
+        
+        const currentLiIndex = [...lis].indexOf(currentLi);
+        
+
+        const actions = {
+            chk:function() {
+                console.log("button no objeto")
+            },
+            btnTrash:function () {
+                arrTask.splice(currentLiIndex, 1)
+                renderTasks();
+                input.focus();
+            }
+
+        }
+        if(actions[dataAction]){
+            actions[dataAction]()
+        }
     }
 
     bntAdd.addEventListener("click",function(e) {
     
         if(input.value == ""){
             alert("Campo está vazio. Preenche-o e tente novamente");
-            e.preventDefault();
             input.focus();
+            return;
         }else{
             addTask(input.value);
             renderTasks()

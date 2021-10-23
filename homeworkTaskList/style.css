@@ -95,6 +95,15 @@ li button{
    
 }
 
+li .trash:hover{
+    color: brown;
+    
+}
+
+li .create:hover{
+    color:darkblue;
+}
+
 li .btns{
     width: 60px;
     display: flex;
@@ -108,7 +117,7 @@ li .btns{
     padding: 15px 20px;
     background-color: #aaa;
     border-radius: 5px;
-    display:flex;
+    display:none;
     align-items: center;
     text-align: center;
     position: absolute;

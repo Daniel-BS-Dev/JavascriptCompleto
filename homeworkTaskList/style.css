@@ -90,32 +90,59 @@ li .divTxt{
 }
 
 li button{
-    font-size: 20px;
+    font-size: 25px;
+    background-color: #fff;
     cursor: pointer;
+    border: none;
+    
    
 }
 
-li .trash:hover{
-    color: brown;
+
+li button .trash, li .create{
+    background-color: #bbb;
+    padding: 2px;
+    border-radius: 4px;
+    border: 1px solid #000;
+}
+
+li button .trash:hover{
+    color: rgba(202, 39, 39, 0.80);
+    border: 2px solid rgba(202, 39, 39, 0.80);;
+    font-size: 23px;
+    background: #fff;
+    transition: all 0.2s ease-out;
     
 }
 
 li .create:hover{
-    color:darkblue;
+    color:rgba(8, 8, 248, 0.80);
+    border: 2px solid rgba(8, 8, 248, 0.80);
+    font-size: 23px;
+    background: #fff;
+    transition: all 0.1s ease-out;
 }
 
 li .btns{
-    width: 60px;
+    width: 70px;
     display: flex;
     justify-content: space-between;
+   
+    
     
 
+}
+
+li .chk{
+    width:25px;
+    height: 25px;
+    
 }
 
 .containerEdit{
     width: 100%;
     padding: 15px 20px;
-    background-color: #aaa;
+    background-color: rgba(170, 170, 170, 0.85);
     border-radius: 5px;
     display:none;
     align-items: center;

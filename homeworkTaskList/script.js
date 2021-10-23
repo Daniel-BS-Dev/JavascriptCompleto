@@ -4,6 +4,7 @@
     const bntAdd = document.getElementById("btnAdd");
     const lis    =  ul.getElementsByTagName("li");
 
+
     let arrTask = [
         {
             name:"task 1",
@@ -18,7 +19,7 @@
             let newP     = document.createElement("p");
             let chk      = document.createElement("input");
             let div      = document.createElement("div");
-            let btnCreate  = document.createElement("button");
+            let btnCreate= document.createElement("button");
             let btnTrash= document.createElement("button");
             let divEdit  = document.createElement("div");
             let txt      = document.createElement("input");
@@ -26,8 +27,10 @@
             let btnRemove= document.createElement("button");
  
             chk.type = `checkbox`;
+            chk.className="chk";
             chk.setAttribute("data-action", "chk");
             newP.textContent=obj.name;
+            newP.setAttribute("class","tagP");
             divTxt.className="divTxt";
             divTxt.appendChild(chk);
             divTxt.appendChild(newP);
@@ -38,13 +41,14 @@
             divEdit.setAttribute("class", "containerEdit");
             newLi.appendChild(divEdit);
             txt.setAttribute("type","text");
+            txt.value = obj.name;
+            txt.setAttribute("class","inputValue");
             divEdit.appendChild(txt);
             btnEdit.textContent="Edit";
             btnEdit.className="edit"
             btnEdit.setAttribute("data-action","btnEdit")
             divEdit.appendChild(btnEdit);
 
-            
             btnRemove.textContent="Cancel";
             btnRemove.className="cancel"
             btnRemove.setAttribute("data-action","btnRemove");
@@ -86,10 +90,59 @@
         
 
         const actions = {
-            chk:function() {
-                console.log("button no objeto")
+            btnCreate:function() {
+                const editInput = currentLi.querySelector(".inputValue");
+               
+                const btns = currentLi.getElementsByClassName("btns");
+                [...btns].forEach(btn =>{
+                    btn.style.pointerEvents= "none";
+                })
+                const chk = document.querySelector(".chk");
+                chk.style.pointerEvents="none";
+                input.style.pointerEvents="none";
+                bntAdd.style.pointerEvents="none";
+
+                
+                [...ul.querySelectorAll(".containerEdit")].forEach(container => {
+                    container.removeAttribute("style");
+                })
+
+                const containerEdit = currentLi.querySelector(".containerEdit");
+                containerEdit.style.display="flex";
+                editInput.focus();
             },
+
+            btnEdit:function(){
+                const editInput = currentLi.querySelector(".inputValue");
+            
+                if(editInput.value !== ""){
+                   arrTask[currentLiIndex].name = editInput.value;
+                   renderTasks();
+                   input.style.pointerEvents="";
+                   bntAdd.style.pointerEvents="";
+                   input.focus();
+
+
+                }else{
+                    alert("Campo vazio");
+                    editInput.focus();
+                    return
+                }
+                
+            },
+
+            btnRemove:function() {
+                const cancel = currentLi.querySelector(".cancel");
+                cancel.removeAttribute("style");
+                renderTasks();
+                input.style.pointerEvents="";
+                bntAdd.style.pointerEvents="";
+                input.focus();
+            },
+
             btnTrash:function () {
+                let response = confirm("Deseja Deletar")
+                if(!response) return;
                 arrTask.splice(currentLiIndex, 1)
                 renderTasks();
                 input.focus();
@@ -116,7 +169,7 @@
     });
 
     ul.addEventListener("click",clickedUl)
-
+    
     renderTasks();
     
     

@@ -14,7 +14,7 @@
         tasksData = JSON.parse(tasksData);
         console.log(tasksData)
 
-        return tasksData.length ? tasksData : [
+        return tasksData && tasksData.length ? tasksData : [
          {
             name:"task 1",
             createAt: Date.now(),

@@ -13,19 +13,26 @@
 
 
 	function Task(name, completed, createdAt, updatedAt){
-	      if(name){
-              this.name = name;
-              this.completed=completed || false;
-              this.createdAt=createdAt || Date.now();
-              this.updatedAt=updatedAt || null;
-              this.toggleDone = function() {
-                  this.completed = !this.completed;
+	      if(!name){
+             throw new Error("Task need a required parameter: name")
               }
-          }else{
-            throw new Error("Task need a required parameter: name")
-
+               // this.name = name;
+               let _name = name;
+               this.completed=completed || false;
+               this.createdAt=createdAt || Date.now();
+               this.updatedAt=updatedAt || null;
+               this.toggleDone = function() {
+                   this.completed = !this.completed;
+            
           }
+          //como não estou usando o this aqui eu posso fazer assim
+          //this.getName = function() {
+          //   return _name;
+          //}
 
+         //sendo apenas uma linha de retorno 
+         this.getName = () => _name;
+         this.setName = (newName) => {_name = newName }
 	}
 
 	let arrTasks = [
@@ -83,7 +90,7 @@
         li.appendChild(checkButton)
 
         p.className = "task-name"
-        p.textContent = obj.name
+        p.textContent = obj.getName();
         li.appendChild(p)
 
         editButton.className = "fas fa-edit"
@@ -96,7 +103,7 @@
         const inputEdit = document.createElement("input")
         inputEdit.setAttribute("type", "text")
         inputEdit.className = "editInput"
-        inputEdit.value = obj.name
+        inputEdit.value = obj.getName
 
         containerEdit.appendChild(inputEdit)
         const containerEditButton = document.createElement("button")
@@ -165,7 +172,7 @@
             },
             containerEditButton: function () {
                 const val = currentLi.querySelector(".editInput").value
-                arrInstancesTasks[currentLiIndex].name = val
+                arrInstancesTasks[currentLiIndex].setName(val) 
                 renderTasks()
             },
             containerCancelButton: function () {

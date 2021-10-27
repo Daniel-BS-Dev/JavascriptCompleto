@@ -1,0 +1,22 @@
+const data = new Date();
+console.log(data);
+console.log("DateTime: "+Date.UTC(2020,7,20));
+console.log("dateNow:"+Date.now());
+console.log("getDay: "+data.getDay());
+console.log("getDate: "+data.getDate());
+console.log("getMonth: "+data.getMonth());
+console.log("getTime: "+data.getTime());
+console.log("getFullYear: "+data.getFullYear());
+console.log("getHours: "+data.getHours());
+console.log("getMinutes: "+data.getMinutes());
+console.log("getSeconds: "+data.getSeconds());
+console.log("getUTCHours: "+data.getUTCHours());
+console.log("getTimezone: "+data.getTimezoneOffset());
+console.log("toString: "+data.toString());
+console.log("toDateString: "+data.toDateString());
+console.log("toISOString: "+data.toISOString());
+console.log("toLocaleDatetring: "+data.toLocaleDateString());
+console.log("toLocaleString: "+data.toLocaleString());
+console.log("toLocaleString: "+data.toLocaleString("en-US"));
+console.log("toLocaleString: "+data.toLocaleString("pt-BR",{month:"long", weekday:"long", day:"numeric", year:"numeric"}));
+

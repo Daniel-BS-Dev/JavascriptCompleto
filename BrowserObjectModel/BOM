@@ -1,0 +1,32 @@
+innerHeight       -> altura onde fica o conteudo na minha janela no browser
+innerWidth        -> largura onde fica o conteudo na minha janela no browser
+outerHeight       -> altura da minha janela inteira
+outerWidth        -> largura da minha janela inteira
+screenX           -> posição da minha janela inteira na tela do meu computador
+screeny           -> posição da minha janela y
+history           -> vai para uma outra pagina
+history.back()    -> volta para tras
+history.forward() -> vai para frente
+history.go()      -> recebe um parametro, se eu colocar go -1 ele vai para tras
+location          -> informações da url
+location.href     -> vai mostar a url
+location.hash     -> mostar a # 
+location.search   -> mostar os parametros que são passados via url
+location.protocol -> passa o protocolo
+location.reload() -> vai regarregar a pagina, sem alteração
+location.replace("http://serfrontend.com") -> navega mas não altera o numero de navegação
+location.assign("http://google.com.br")   -> ele navega e altera o numero de navegação da pagina
+
+navigator           -> visualizar iinformações sobre visualização do site
+navigator.userAgent -> uma string com varias informações de acesso
+navigator.plugins   -> são os plugins disponiveis
+navigator.cookiesEnabled -> se esta abilitao para coookies
+navigator.platform   -> nome do browser
+
+screen -> informações sobre a tela o monitor
+screen.availWidth -> largura
+screen.availHeight-> altura com barra de tarefas
+screen.height     -> sem bara de tarefas
+
+scrollTo(x,y) -> vai escrolar ate a posição desejada não soma os valores
+scrollBy(x,y) -> vai escrola e somar os valores

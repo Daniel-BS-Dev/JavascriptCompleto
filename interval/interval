@@ -1,0 +1,4 @@
+setTimeout(fn, ms) -> recebe uma função e um tempo como parametros, espera esse tempo para executar a função
+setInterval(fn,ms) -> recebe uma função é um tempo, realiza a função em loop no tempo determinado
+clearTimeout(id)   -> limpar o meu setTimeout
+clearInterval(id)

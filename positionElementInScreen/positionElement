@@ -1,0 +1,18 @@
+classList.add()    -> adiciona uma classe sem remover as demais
+classList.remove() -> remove uma classe
+classList.toggle() -> remove com um toque adiciona com um toque
+className          -> adiciona uma classe removendo as demais
+offsetHeight       -> tamanho do elemento
+offsetWidth        -> largura do elemento
+offsetLeft         -> relacinado a posição do elemento no documento
+offsetTop          -> relacionado a posição do elemento no documento
+getComputedStyle   -> vai mostra os estilos computados é um objeto do window
+
+posição do elemento em relação a viewport
+
+getBoundingClientRect()
+bottom
+right
+top
+width
+height

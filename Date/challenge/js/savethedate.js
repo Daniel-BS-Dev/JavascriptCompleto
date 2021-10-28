@@ -21,7 +21,13 @@
     //left = left - minuteLeft * ONE_MINUTE
 
     const secondsLeft = parseInt(left / 1000)
-    console.log(daysLeft, hoursLeft, minuteLeft, secondsLeft)
+    addLeftTime(daysLeft, hoursLeft, minuteLeft, secondsLeft)
+
+    function addLeftTime(d, h, m, s) {
+        const p = document.createElement("p");
+        p.textContent = `contagem regreciva: ${d} dias, ${h} horas, ${m} minutos, ${s} segundos`
+        document.querySelector(".hero-content").appendChild(p);
+    }
 
 
 

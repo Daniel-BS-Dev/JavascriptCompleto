@@ -19,7 +19,7 @@ console.log(t2);
 
 // recebendo parametros
 const Arrow = (daniel, rosa) => {
-    console.log("function expression teste"+daniel+rosa)
+    console.log("function expression test "+daniel+rosa)
     return  "fn expression"
 }
 

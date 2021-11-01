@@ -7,9 +7,9 @@
                return console.log(arr[arr.length -1])
              }
         },
-
+        // retornando uma copia de array
         get usernames(){
-            return console.log(arr)
+            return console.log([].concat(arr))
         },
 
         set username(_username){
